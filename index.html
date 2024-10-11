@@ -7,27 +7,37 @@
     <link rel="stylesheet" href="style-s.css">
 </head>
 <body style="min-height: 557.8px; margin: 8px;>
-    <div id="loginSection" class="login-form">
-        <div class="login-logo">
-            <img style="width: 242px;" src="s-logo.png">
-            <br> 
-            Student
+    <div class="login-page">
+        <div login-box>
+            <div id="loginSection" class="login-form">
+                <div class="login-logo">
+                    <img style="width: 242px;" src="s-logo.png">
+                    <br> 
+                    Student
+                </div>
+                <form>
+                    <div>
+                        <input type="text" id="Username" placeholder="ชื่อผู้ใช้" required>
+                    </div>
+                    <div>
+                        <input type="password" id="Password" placeholder="รหัสผ่าน" required>
+                    </div>
+                    <div class="icheck-primary d-inline">
+                        <input type="checkbox" id="remember" checked="" class="form-control">
+                        <label for="remember"> Remember Me </label>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <button onclick="login()">LOG IN</button>
+                        </div>
+                    </div>
+                    <div id="loginMessage" style="color: #000;"></div>
+                </form>
+                <br> 
+                <a href="https://www.infopro.co.th">Powered by InfoproACE</a>
+                <br> 
+            </div>
         </div>
-        <div>
-            <input type="text" id="Username" placeholder="ชื่อผู้ใช้" required>
-        </div>
-        <div>
-            <input type="password" id="Password" placeholder="รหัสผ่าน" required>
-        </div>
-        <div class="icheck-primary d-inline">
-            <input type="checkbox" id="remember" checked="" class="form-control">
-            <label for="remember"> Remember Me </label>
-        </div>
-        <button onclick="login()">LOG IN</button>
-        <div id="loginMessage" style="color: red;"></div>
-        <br> 
-        <a href="https://www.infopro.co.th">Powered by InfoproACE</a>
-        <br> 
     </div>
 
     <div id="gradeSection" style="display: none;">
