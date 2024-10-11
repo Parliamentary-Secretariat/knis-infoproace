@@ -26,6 +26,7 @@
         </div>
         <button onclick="login()">LOG IN</button>
         <div id="loginMessage" style="color: red;"></div>
+        <a href="https://www.infopro.co.th">Powered by InfoproACE</a>
     </div>
 
     <div id="gradeSection" style="display: none;">
@@ -72,7 +73,7 @@
                 displayGrades(student.grades);
                 loginMessage.innerText = '';
             } else {
-                loginMessage.innerText = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';
+                loginMessage.innerText = 'Invalid password';
             }
         }
 
