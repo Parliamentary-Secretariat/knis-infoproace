@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบดูเกรดนักเรียน</title>
+    <style>
+    </style>
+</head>
+<body>
+    <div id="loginSection" class="login-form">
+        <h1>เข้าสู่ระบบ</h1>
+        <input type="text" id="username" placeholder="ชื่อผู้ใช้" required>
+        <input type="password" id="password" placeholder="รหัสผ่าน" required>
+        <button onclick="login()">เข้าสู่ระบบ</button>
+        <div id="loginMessage" style="color: red;"></div>
+    </div>
+
+    <div id="gradeSection" style="display: none;">
+        <h1>ระบบดูเกรดนักเรียน</h1>
+        <table class="grade-table">
+            <thead>
+                <tr>
+                    <th>ชื่อวิชา</th>
+                    <th>เกรด</th>
+                </tr>
+            </thead>
+            <tbody id="gradesBody">
+                <!-- Dynamic content will be added here -->
+            </tbody>
+        </table>
+        <button onclick="calculateGPA()">คำนวณ GPA</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        let studentData;
+
+        fetch('students.json')
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.json();
+            })
+            .then(data => {
+                studentData = data;
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const loginMessage = document.getElementById('loginMessage');
+
+            // ตรวจสอบข้อมูลนักเรียนจาก JSON
+            const student = studentData?.students[username]; // ใช้ optional chaining
+            if (student && student.password === password) {
+                // รหัสผ่านถูกต้อง แสดงเกรด
+                displayGrades(student.grades);
+                loginMessage.innerText = '';
+            } else {
+                loginMessage.innerText = 'ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง';
+            }
+        }
+
+        function displayGrades(grades) {
+            const gradesBody = document.getElementById('gradesBody');
+            gradesBody.innerHTML = ''; // Clear previous grades
+
+            grades.forEach(grade => {
+                const row = document.createElement('tr');
+                row.innerHTML = `<td>${grade.subject}</td><td><input type="text" class="grade" value="${grade.grade}" readonly></td>`;
+                gradesBody.appendChild(row);
+            });
+
+            document.getElementById('loginSection').style.display = 'none';
+            document.querySelector('.grade-table').style.display = 'table';
+            document.getElementById('gradeSection').style.display = 'block';
+        }
+
+        function calculateGPA() {
+            const grades = document.querySelectorAll('.grade');
+            let totalPoints = 0;
+            let totalSubjects = 0;
+
+            grades.forEach((input) => {
+                const grade = parseFloat(input.value); // Convert to number
+                if (!isNaN(grade)) {
+                    totalPoints += grade;
+                    totalSubjects++;
+                }
+            });
+
+            const gpa = totalSubjects > 0 ? (totalPoints / totalSubjects).toFixed(2) : 0;
+            document.getElementById('result').innerText = `GPA: ${gpa}`;
+        }
+    </script>
+</body>
+</html>
