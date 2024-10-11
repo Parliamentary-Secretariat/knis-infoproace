@@ -35,6 +35,24 @@
     --infopro-ace-nav: var(--infopro-ace-blue);
 }
 
+body {
+    margin: 0;
+    font-family: Roboto, Helvetica Neue, sans-serif;
+}
+body, html {
+    height: 100%;
+}
+html, body, .wrapper {
+    min-height: 100%;
+}
+body {
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #ffffff;
+}
 .login-page, .register-page {
     -ms-flex-align: center;
     align-items: center;
