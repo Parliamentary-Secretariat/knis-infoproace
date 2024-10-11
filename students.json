@@ -1,0 +1,28 @@
+{
+    "students": {
+        "10001": {
+            "username": "10001",
+            "password": "password123",
+            "name": "สมชาย ใจดี",
+            "grades": [
+                {"subject": "คณิตศาสตร์", "grade": 4},
+                {"subject": "วิทยาศาสตร์", "grade": 3.5},
+                {"subject": "ภาษาอังกฤษ", "grade": 2.5}
+            ],
+            "enrollmentYear": 2022,
+            "status": "active"
+        },
+        "10002": {
+            "username": "10002",
+            "password": "password456",
+            "name": "นางสาว สวยใส",
+            "grades": [
+                {"subject": "คณิตศาสตร์", "grade": 3},
+                {"subject": "วิทยาศาสตร์", "grade": 2},
+                {"subject": "ภาษาอังกฤษ", "grade": 1.5}
+            ],
+            "enrollmentYear": 2022,
+            "status": "active"
+        }
+    }
+}
