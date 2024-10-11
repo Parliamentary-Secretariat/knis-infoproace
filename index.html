@@ -20,7 +20,11 @@
         <div>
             <input type="password" id="Password" placeholder="รหัสผ่าน" required>
         </div>
-        <button onclick="login()">เข้าสู่ระบบ</button>
+        <div class="icheck-primary d-inline">
+            <input type="checkbox" id="remember" checked="" class="form-control">
+            <label for="remember"> Remember Me </label>
+        </div>
+        <button onclick="login()">LOG IN</button>
         <div id="loginMessage" style="color: red;"></div>
     </div>
 
