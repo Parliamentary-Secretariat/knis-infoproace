@@ -61,7 +61,7 @@
     <script>
         let studentData;
 
-        fetch('students.json')
+        fetch('https://knis-infoproace.pages.dev/students.json')
             .then(response => {
                 if (!response.ok) throw new Error('Network response was not ok');
                 return response.json();
